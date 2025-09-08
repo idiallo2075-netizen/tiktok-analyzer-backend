@@ -1,12 +1,8 @@
 export default function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Only POST allowed" });
+    return res.status(405).json({ error: "Only POST is allowed" });
   }
 
-  // In a real app, you'd handle file uploads (e.g., to Cloudinary/S3)
-  // For now, just return a success response
-  return res.status(200).json({
-    message: "File upload endpoint is working!",
-    status: "ok",
-  });
+  // Dummy response
+  res.status(200).json({ hookScore: 72, retentionScore: 85 });
 }
