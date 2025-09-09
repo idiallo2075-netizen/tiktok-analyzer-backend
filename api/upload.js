@@ -22,7 +22,13 @@ export default async function handler(req, res) {
     const hookScore = Math.floor(Math.random() * 100);
     const retentionScore = Math.floor(Math.random() * 100);
 
-    return res.status(200).json({ hookScore, retentionScore });
+    // 🔹 Add a second retention score (different calculation)
+    const retentionScore2 = Math.min(
+      100,
+      Math.max(0, retentionScore + (Math.floor(Math.random() * 21) - 10)) // ±10 variation
+    );
+
+    return res.status(200).json({ hookScore, retentionScore, retentionScore2 });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Upload failed" });
